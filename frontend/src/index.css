@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #da0428;
+  --secondary: #fff1e6;
+  --accent: #cd9951;
+  --accent-light: #cd9951b4;
+  --tertiary: #7f5b98;
+  --tertiary-light: #7f5b984a;
+  --black: #050316;
+  --white: #ffffff;
+  --padding: 18px;
+}
+
+* {
+  box-sizing: border-box;
+  color: var(--black);
+}
+
+.u-text-primary {
+  color: var(--primary);
+}
+
+.u-text-secondary {
+  color: var(--secondary);
+}
+
+.u-text-accent {
+  color: var(--accent);  
+}
+
+
+
+.u-text-tertiary {
+  color: var(--tertiary);
+}
+
+.u-text-black {
+  color: var(--black) !important;
+}
+
+.u-text-white {
+  color: var(--white);
+}
+
+.u-bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.u-bg-secondary {
+  background-color: var(--secondary);
+}
+
+.u-bg-accent {
+  background-color: var(--accent);
+}
+
+.u-bg-accent-light {
+  background-color: var(--accent-light);
+}
+
+.u-bg-tertiary {
+  background-color: var(--tertiary);
+}
+
+.u-bg-black {
+  background-color: var(--black);
+}
+
+.u-bg-white {
+  background-color: var(--white);
+}
+
+.u-bg-tertiary-light {
+  background-color: var(--tertiary-light);
+}
+
+.u-box-shadow {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, .25);
+}
+
+.u-text-shadow {
+  text-shadow: 0px 2px 8px rgba(0, 0, 0, .25);
+}
+
+@font-face {
+  font-family: "Sarasvati";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sarasvati Regular"),
+    url("./assets/fonts/Sarasvati-9Y4w5.woff") format("woff"),
+    url("./assets/fonts/Sarasvati-9Y4w5.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Itangiuh";
+  font-style: normal;
+  font-weight: normal;
+  src: local("itangiuh Personal Use only Regular"),
+    url("./assets/fonts/ItangiuhPersonalUseOnly-PKeZm.woff") format("woff"),
+    url("./assets/fonts/ItangiuhRegularPersonalUseOnly-0WmV9.otf") format("opentype");
+    
+}
+
+@font-face {
+  font-family: "Wasted Vindey";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Wasted Vindey"),
+    url('./assets//fonts/Wasted Vindey.woff2') format('woff2'),
+    url('./assets/fonts/Wasted Vindey.ttf') format('truetype');
+}
+
+.u-font-sarasvati {
+  font-family: "Sarasvati", serif;
+}
+
+.u-font-itangiuh {
+  font-family: "Itangiuh", serif;
+}
+
+.u-font-wasted {
+  font-family: "Wasted Vindey", serif;
+}
+
+.u-border-layout {
+  border: 15px solid var(--accent);
+  border-radius: 0px;
+  padding: 30px 30px 0 30px;
+}
+
+.u-border-accent {
+  border: 1px solid var(--accent);
+}
+
+.u-border-accent-bold {
+  border: 2px solid var(--accent);
+}
+
+.u-outline-none {
+  outline: none;
+}
+
+
+.jaggery-image {
+  position: absolute;
+  width: 200% !important; /* Twice the width of the container */
+  max-width: 200% !important; /* Twice the width of the container */
+  /* height: 200%;  */
+  top: -55%; 
+  left: 10%; 
+  animation: rotate 30s cubic-bezier(.79,.1,.21,.88) infinite reverse; /* Adjust the duration as needed */
+}
+
+@keyframes rotate {
+  0% {
+      transform: rotate(0deg);
+  }
+  25% {
+      transform: rotate(90deg);
+  }
+  50% {
+      transform: rotate(180deg);
+  }
+  75% {
+      transform: rotate(270deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+::selection {
+  color: var(--tertiary);
+  background-color: var(--accent);
+}
+
+#product-card--container {
+  position: relative;
+  padding: var(--padding);
+  /* border: 2px solid black; */
+}
+
+#product-card--container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(var(--padding) - 2px);
+  transform: translate(-50%, -50%);
+  width: 4px;
+  border: 1.4px solid var(--accent-light);
+  height: 80%;
+  background-color: transparent;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+}
+
+#product-card--container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(var(--padding) + 2px);
+  transform: translate(-50%, -50%);
+  width: 4px;
+  border: 1.4px solid var(--accent-light);
+  height: 80%;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+  background-color: transparent;
+}
+
+#card-1 {
+  background: url(./farms.png) no-repeat center center / cover;
+  background-color: var(--accent-light);
+  background-blend-mode: multiply;
+  background-position: center;
+}
+
+
+#card-2 {
+  background: url(./baking.png) no-repeat center center / cover;
+  background-color: var(--tertiary-light);
+  background-blend-mode: multiply;
+  background-position: center;
+}
+
+
+#card-3 {
+  background: url(./healthy-food.png) no-repeat center center / cover;
+  background-color: var(--tertiary);
+  background-blend-mode: multiply;
+  background-position: 50% 70%;
+}
