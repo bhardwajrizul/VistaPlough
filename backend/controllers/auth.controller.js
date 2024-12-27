@@ -49,12 +49,9 @@ export const signup = async (req, res) => {
 
 		setCookies(res, accessToken, refreshToken);
 
-		res.status(201).json({
-			_id: user._id,
-			name: user.name,
-			email: user.email,
-			role: user.role,
-		});
+		const leanUser = user.toObject();
+		delete leanUser.password;
+		res.json(leanUser);
 	} catch (error) {
 		console.log("Error in signup controller", error.message);
 		res.status(500).json({ message: error.message });
@@ -64,19 +61,16 @@ export const signup = async (req, res) => {
 export const login = async (req, res) => {
 	try {
 		const { email, password } = req.body;
+		console.log(email, password);
 		const user = await User.findOne({ email });
 
 		if (user && (await user.comparePassword(password))) {
 			const { accessToken, refreshToken } = generateTokens(user._id);
 			await storeRefreshToken(user._id, refreshToken);
 			setCookies(res, accessToken, refreshToken);
-
-			res.json({
-				_id: user._id,
-				name: user.name,
-				email: user.email,
-				role: user.role,
-			});
+			const leanUser = user.toObject();
+			delete leanUser.password;
+			res.json(leanUser);
 		} else {
 			res.status(400).json({ message: "Invalid email or password" });
 		}
@@ -142,3 +136,61 @@ export const getProfile = async (req, res) => {
 		res.status(500).json({ message: "Server error", error: error.message });
 	}
 };
+
+
+export const updateProfile = async (req, res) => {
+	const { name, countryCode, phone } = req.body;
+	try {
+		const userId = req.user._id;
+		const updateData = {
+			name,
+			number: { countryCode, value: phone }
+		};
+		const updatedUser = await User.findByIdAndUpdate(
+			userId,
+			updateData,
+			{
+				new: true,
+				runValidators: true,
+			}
+		);
+		if (!updatedUser) {
+			return res.status(404).json({ message: "User not found" });
+		}
+		res.status(200).json(updatedUser);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: "Error updating profile", error: error.message });
+	}
+}
+
+export const updateAddress = async (req, res) => {
+	const { address, city, state, pincode, landmark } = req.body;
+	try {
+		const userId = req.user._id;
+		const updateData = {
+			address,
+			city,
+			state,
+			pincode
+		};
+		if (landmark) {
+			updateData.landmark = landmark;
+		}
+		const updatedUser = await User.findByIdAndUpdate(
+			userId,
+			{ address: updateData },
+			{
+				new: true,
+				runValidators: true,
+			}
+		);
+		if (!updatedUser) {
+			return res.status(404).json({ message: "User not found" });
+		}
+		res.status(200).json(updatedUser);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: "Error updating address", error: error.message });
+	}
+}

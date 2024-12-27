@@ -2,19 +2,38 @@ import { motion } from "framer-motion";
 
 import pincodeDirectory from 'india-pincode-lookup';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import toast from "react-hot-toast";
 
-const Address = () => {
+import { useUserStore } from "../../stores/useUserStore";
+import { Loader } from "lucide-react";
+
+const Address = ({ user }) => {
+
+    
+    const { patchShippingDetails, loading, userUpdated } = useUserStore();
+    
+    useEffect(() => {
+        if (userUpdated) {
+            setAddress({
+                address: user?.address?.address || "",
+                landmark: user?.address?.landmark || "",
+                city: user?.address?.city || "",
+                state: user?.address?.state || "",
+                pincode: user?.address?.pincode || "",
+                disabled: true
+            });
+        }
+    }, [userUpdated, user])
 
     const [address, setAddress] = useState({
         country: "India",
-        address: "",
-        landmark: "",
-        city: "",
-        state: "",
-        pincode: "",
+        address: user?.address?.address || "",
+        landmark: user?.address?.landmark || "",
+        city: user?.address?.city || "",
+        state: user?.address?.state || "",
+        pincode: user?.address?.pincode || "",
         disabled: true
     })
 
@@ -48,11 +67,23 @@ const Address = () => {
         }
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        patchShippingDetails({
+            address: address.address,
+            landmark: address.landmark,
+            city: address.city,
+            state: address.state,
+            pincode: address.pincode
+        });
+    }
+
     return (
-        <motion.div
+        <motion.form
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
+            onSubmit={(e) => handleSubmit(e)}
             className="basis-[65%] flex flex-col mt-4">
 
             <motion.h1
@@ -96,7 +127,7 @@ const Address = () => {
                     <input
                         id="country-input"
                         type="text"
-                        value={address.country}
+                        value={address.country || 'India'}
                         className={`u-input w-full rounded-[10px] text-xl py-1 px-2 u-font-wasted outline-none`}
                         disabled={true}
                     />
@@ -142,30 +173,58 @@ const Address = () => {
                 </div>
             </div>
             <div className="flex flex-row justify-center gap-4">
-                <button
-                    type="button"
-                    onClick={() => setAddress({ ...address, disabled: !address.disabled })}
-                    className={`u-bg-tertiary text-center px-10 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-sarasvati text-lg u-text-white
-                                transition duration-150 ease-in-out disabled:opacity-50 ${address.disabled ? 'u-bg-tertiary' : 'u-bg-primary'}`}
-                >
-                    {
-                        address.disabled
-                            ? 'Edit Address'
-                            : 'Update Address'
-                    }
-                </button>
                 {
-                    !address.disabled && (
+                    address.disabled && !loading && (
                         <button
                             type="button"
-                            onClick={() => setAddress({ ...address, disabled: true })}
+                            onClick={() => setAddress({ ...address, disabled: false })}
                             className={`u-bg-tertiary text-center px-10 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-sarasvati text-lg u-text-white
-                                transition duration-150 ease-in-out disabled:opacity-50 ${address.disabled ? 'u-bg-tertiary' : 'u-bg-primary'}`}
+                                transition duration-150 ease-in-out disabled:opacity-50`}
+                        >
+                            Edit Shipping Details
+                        </button>
+                    )
+                }
+                {
+                    !address.disabled && !loading && (
+                        <button
+                            type="submit"
+                            className={`text-center px-10 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-sarasvati text-lg u-text-white
+                                transition duration-150 ease-in-out disabled:opacity-50 u-bg-primary`}
+                        >
+                            Update Shipping Details
+                        </button>
+                    )
+                }
+                {
+                    !address.disabled && loading && (
+                        <div className="mt-4">
+                            <Loader className='mr-2 h-6 w-6 animate-spin inline' aria-hidden='true' />
+                            Updating Shipping Details...
+                        </div>
+                    )
+                }
+                {
+                    !address.disabled && !loading && (
+                        <button
+                            type="button"
+                            onClick={() => setAddress(
+                                {
+                                    address: user?.address?.address || "",
+                                    landmark: user?.address?.landmark || "",
+                                    city: user?.address?.city || "",
+                                    state: user?.address?.state || "",
+                                    pincode: user?.address?.pincode || "",
+                                    disabled: true
+                                }
+                            )}
+                            className="text-center px-10 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-sarasvati text-lg u-text-white u-bg-primary"
                         >
                             Cancel
                         </button>
                     )
                 }
+
             </div>
             <div className="text-center font-bold u-bg-secondary p-2 rounded-[15px] u-border-accent u-box-shadow mt-8 text-md text-slate-600 u-font-wasted">
                 For Shipping outside India, please contact us at&nbsp;
@@ -176,7 +235,7 @@ const Address = () => {
                     your@email.address
                 </a>
             </div>
-        </motion.div>
+        </motion.form>
     )
 }
 

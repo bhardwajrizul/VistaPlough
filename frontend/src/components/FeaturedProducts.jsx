@@ -37,12 +37,12 @@ const FeaturedProducts = ({ featuredProducts }) => {
 	return (
 		<div className='w-[85%] mx-auto py-3'>
 			<div className='container'>
-				<div id='promise-heading' className='w-full h-fit px-2 py-1 bg-white rounded-[25px] u-border-accent flex flex-col items-center justify-center shadow-[0px_2px_4px_rgba(0,0,0,0.25)] '>
+				<div id='promise-heading' className='w-full h-fit px-2 py-1 bg-white rounded-[15px] u-border-accent flex flex-col items-center justify-center shadow-[0px_2px_4px_rgba(0,0,0,0.25)] '>
 					<img src={BorderTop} alt="Decoration Border Top" />
 					<h1 className='u-font-sarasvati text-4xl u-text-accent u-text-shadow my-[-10px]'>Featured Products</h1>
 					<img src={BorderBottom} alt="Decoration Border Bottom" />
 				</div>
-				<div className='relative u-bg-white pt-8 mt-8 u-border-accent rounded-[25px] u-box-shadow'>
+				<div className='relative u-bg-white pt-8 mt-8 u-border-accent rounded-[15px] u-box-shadow'>
 					<div className='overflow-hidden'>
 						<div
 							className='flex transition-transform duration-300 ease-in-out'

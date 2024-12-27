@@ -29,11 +29,11 @@ function App() {
 	const { getCartItems } = useCartStore();
 	useEffect(() => {
 		checkAuth();
+		console.log("User was set");
 	}, [checkAuth]);
 
 	useEffect(() => {
 		if (!user) return;
-
 		getCartItems();
 	}, [getCartItems, user]);
 
@@ -60,7 +60,7 @@ function App() {
 					<Route path='/products' element={<ProductsPage />} />
 					<Route path='/products/:pid' element={<ProductPage />} />
 					<Route path='/profile' element={user ? <ProfilePage /> : <Navigate to='/login' />}>
-						<Route index element={user ? <General /> : <Navigate to='/login' />} />
+						<Route index element={user ? <General user={user} /> : <Navigate to='/login' />} />
 						<Route path='orders' element={user ? <Orders /> : <Navigate to='/login' />} />
 						<Route path='settings' element={user ? <Settings /> : <Navigate to='/login' />} />
 					</Route>

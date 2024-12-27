@@ -12,7 +12,7 @@ const MiniImage = ({ src, updateSelectedImage } ) => {
                 src={src}
                 alt="product image"
                 onClick={() => updateSelectedImage(src)}
-                className={`${imageLoaded ? 'block w-full' : 'hidden'} u-border-accent rounded-[15px] aspect-square  cursor-pointer `}
+                className={`${imageLoaded ? 'block w-full' : 'hidden'} u-border-accent rounded-[10px] aspect-square  cursor-pointer `}
                 onLoad={() => setImageLoaded(true)} />
         </Fragment>
     )

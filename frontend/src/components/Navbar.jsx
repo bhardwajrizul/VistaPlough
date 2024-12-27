@@ -1,5 +1,5 @@
-import { LucideUser, UserPlus, LogIn } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { LucideUser, UserPlus, LogIn, SearchIcon } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUserStore } from "../stores/useUserStore";
 import { useCartStore } from "../stores/useCartStore";
 
@@ -8,6 +8,7 @@ import LogoWithLink from './Logo';
 import HomeImage from '../assets/Images/home.svg';
 import ShopImage from '../assets/Images/shop.svg';
 import CartImage from '../assets/Images/cart.svg';
+import { useState } from "react";
 
 
 
@@ -18,11 +19,31 @@ const Navbar = () => {
 
 	const location = useLocation();
 
+	const [searchInput, setSearchInput] = useState('');
+
+	const navigate = useNavigate();
+
+	const handleFormSubmit = (e) => {
+		e.preventDefault();
+		navigate(`/products?s=${searchInput}`);
+	}
+
 	return (
-		<header className='relative u-box-shadow top-0 left-0 w-[85%] mx-auto rounded-[25px] u-bg-white bg-opacity-90 backdrop-blur-md z-40 transition-all duration-300 u-border-accent'>
+		<header className='relative u-box-shadow top-0 left-0 w-[85%] mx-auto rounded-[15px] u-bg-white bg-opacity-90 backdrop-blur-md z-40 transition-all duration-300 u-border-accent'>
 			<div className='container mx-auto px-8 py-3'>
 				<div className='flex flex-wrap justify-between items-center'>
 					<LogoWithLink />
+
+					<form
+						onSubmit={handleFormSubmit}
+						className="flex flex-row flex-1 items-center gap-2 mx-10 relative">
+						<input
+							onChange={(e) => setSearchInput(e.target.value)}
+							className="u-font-wasted focus:shadow-md w-full u-border-accent outline-none rounded-[10px] ps-4 pe-10 py-2" />
+						<button
+							type="submit"
+							className="absolute right-0 m-2"><SearchIcon className="stroke-yellow-600 hover:translate-y-[-2px] active:translate-y-[0px] transition-all ease-in duration-75" /></button>
+					</form>
 
 					<nav className='flex flex-wrap items-center gap-5'>
 						{

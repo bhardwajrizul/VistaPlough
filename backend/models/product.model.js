@@ -5,10 +5,13 @@ const productSchema = new mongoose.Schema(
 		name: {
 			type: String,
 			required: true,
+			lowercase: true,
+			trim: true,
 		},
 		description: {
 			type: String,
 			required: true,
+			trim: true
 		},
 		price: {
 			type: Number,
@@ -18,13 +21,17 @@ const productSchema = new mongoose.Schema(
 		discount: {
 			type: Number,
 			min: 0,
+			max: 100,
 			default: 0,
 			required: true,
 		},
-		images: [{
-			type: String,
-			required: [true, "At least one image is required"],
-		}],
+		images: {
+			type: [String], 
+			validate: {
+				validator: (arr) => arr.length > 0, // Validate at least one image
+				message: "At least one image is required",
+			},
+		},
 		stock: {
 			type: Boolean,
 			default: true,
@@ -32,6 +39,15 @@ const productSchema = new mongoose.Schema(
 		isFeatured: {
 			type: Boolean,
 			default: false,
+		},
+		cloudinary_id: {
+			type: String,
+			validate: {
+				validator: function () {
+					return this.images && this.images.length > 0; 
+				},
+				message: "No folder name provided",
+			},
 		},
 	},
 	{ timestamps: true }

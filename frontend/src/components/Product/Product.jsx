@@ -70,10 +70,10 @@ const Product = ({ productData }) => {
                             !user &&
                             <Link
                                 to='/login'
-                                className='flex flex-row text-center justify-center items-center u-bg-black shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white'
+                                className='flex w-full flex-row text-center justify-center items-center u-bg-black shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white'
                             >
-                                <ShoppingBag className='mr-2 stroke-white' size={22} />
-                                Login to add to cart
+                                <ShoppingBag className='mr-2 stroke-white' size={20} />
+                                Please login to continue
                             </Link>
                         }
                         {

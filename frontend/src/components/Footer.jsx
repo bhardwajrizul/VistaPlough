@@ -8,7 +8,7 @@ import LogoFull from '../assets/Images/logo-full.svg'
 
 const Footer= () => {
     return (
-        <footer className='u-bg-white mt-10 w-[85%] mx-auto my-4 rounded-[25px] u-border-accent min-h-40 py-5 u-box-shadow'>
+        <footer className='u-bg-white mt-10 w-[85%] mx-auto my-4 rounded-[15px] u-border-accent min-h-40 py-5 u-box-shadow'>
             <div className='flex flex-col items-center justify-between gap-5'   >
                 <div className='flex flex-row w-full px-4 items-start justify-around gap-5'>
                     <div className='flex flex-col items-center justify-center gap-2'>

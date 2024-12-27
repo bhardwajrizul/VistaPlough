@@ -16,10 +16,12 @@ const ProductOverviewCard = ({ product }) => {
     const { user } = useUserStore();
     const { addToCart } = useCartStore();
 
+    const formatter = new Intl.NumberFormat('en-IN', {style: 'currency', currency: 'INR'});
+
     return (
         <motion.div
             id='product-card--container'
-            className='rounded-[25px] mb-4 height-full flex flex-col items-stretch justify-between'
+            className='mb-4 height-full flex flex-col items-stretch justify-between'
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -32,7 +34,7 @@ const ProductOverviewCard = ({ product }) => {
                     className='w-full relative image-container'>
                     <Link to={`/products/${product._id}`}>
                         <img
-                            className={`${imageloaded ? 'block w-[85%] cursor-pointer' : 'hidden'}  relative mx-auto relative aspect-square u-border-accent rounded-[30px]`}
+                            className={`${imageloaded ? 'block w-[85%] cursor-pointer' : 'hidden'}  relative mx-auto relative aspect-square u-border-accent rounded-[15px]`}
                             src={product.images[0]}
                             alt={product.name}
                             onLoad={() => setImageLoaded(true)} />
@@ -56,8 +58,8 @@ const ProductOverviewCard = ({ product }) => {
             </Link>
             <div className='flex flex-row justify-between items-end w-full'>
                 <div className='ms-8 flex flex-col justify-start w-full'>
-                    <p className='mt-2 u-font-wasted text-lg text-slate-600 line-through'>₹{Math.floor(product.price + 1)}.00</p>
-                    <p className='u-font-wasted text-xl text-tertiary'>₹{Math.floor(product.price - (product.price * (product.discount / 100)) + 1)}.00</p>
+                    <p className='mt-2 u-font-wasted text-lg text-slate-600 line-through'>{formatter.format(product.price + 1)}</p>
+                    <p className='u-font-wasted text-xl text-tertiary'>{formatter.format(product.price - (product.price * (product.discount / 100)))}</p>
                 </div>
                 {
                     product.stock

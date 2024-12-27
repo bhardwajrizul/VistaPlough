@@ -212,7 +212,7 @@
 }
 
 #card-1 {
-  background: url(./farms.png) no-repeat center center / cover;
+  background: url(./farms.webp) no-repeat center center / cover;
   background-color: var(--accent-light);
   background-blend-mode: multiply;
   background-position: center;
@@ -220,7 +220,7 @@
 
 
 #card-2 {
-  background: url(./baking.png) no-repeat center center / cover;
+  background: url(./baking.webp) no-repeat center center / cover;
   background-color: var(--tertiary-light);
   background-blend-mode: multiply;
   background-position: center;
@@ -228,7 +228,7 @@
 
 
 #card-3 {
-  background: url(./healthy-food.png) no-repeat center center / cover;
+  background: url(./healthy-food.webp) no-repeat center center / cover;
   background-color: var(--tertiary);
   background-blend-mode: multiply;
   background-position: 50% 70%;

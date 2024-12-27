@@ -1,11 +1,24 @@
 import { redis } from "../lib/redis.js";
 import cloudinary from "../lib/cloudinary.js";
 import Product from "../models/product.model.js";
+import multer from 'multer';
+import { v4 as uuidv4 } from 'uuid';
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 export const getAllProducts = async (req, res) => {
+	const { s } = req.query;
+	const escapedSearchQuery = s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
 	try {
-		const products = await Product.find({}); // find all products
-		res.json({ products });
+		if (s.trim().length != 0) {
+			const products = await Product.find({ name: { $regex: escapedSearchQuery, $options: "i" } });
+			res.json({ products });
+		} else {
+			const products = await Product.find();
+			res.json({ products });
+		}
 	} catch (error) {
 		console.log("Error in getAllProducts controller", error.message);
 		res.status(500).json({ message: "Server error", error: error.message });
@@ -41,28 +54,128 @@ export const getFeaturedProducts = async (req, res) => {
 
 export const createProduct = async (req, res) => {
 	try {
-		const { name, description, price, image, category } = req.body;
+		const { name, description, price, discount, stock, images } = req.body;
+		const cloudinary_id = uuidv4();
 
-		let cloudinaryResponse = null;
-
-		if (image) {
-			cloudinaryResponse = await cloudinary.uploader.upload(image, { folder: "products" });
+		// Check if images are provided before using cloudinary api
+		if (!images || images.length === 0) {
+			return res.status(400).json({
+				message: 'No images provided.',
+				error: 'No images provided.',
+			});
 		}
 
+		// Upload files to Cloudinary
+		const uploadPromises = images.map((image, index) => {
+			return new Promise((resolve, reject) => {
+				// Remove Data URL prefix if present
+				const base64Data = image.replace(/^data:.*;base64,/, '');
+
+				const uploadStream = cloudinary.uploader.upload_stream(
+					{
+						folder: `products/`,
+						public_id: `${cloudinary_id}_${index}}`,
+					},
+					(error, result) => {
+						if (error) return reject(error);
+						resolve(result.secure_url); // Resolve with secure_url
+					}
+				);
+
+				// Convert cleaned Base64 to buffer and send it to Cloudinary
+				const buffer = Buffer.from(base64Data, 'base64');
+				uploadStream.end(buffer);
+			});
+		});
+
+		const uploadedUrls = await Promise.all(uploadPromises);
+
+		// Save product to database
 		const product = await Product.create({
 			name,
 			description,
-			price,
-			image: cloudinaryResponse?.secure_url ? cloudinaryResponse.secure_url : "",
-			category,
+			price: parseFloat(price), // Ensure numeric value
+			discount: discount ? parseFloat(discount) : 0,
+			stock: stock,
+			images: uploadedUrls,
+			cloudinary_id: cloudinary_id,
 		});
 
 		res.status(201).json(product);
 	} catch (error) {
-		console.log("Error in createProduct controller", error.message);
-		res.status(500).json({ message: "Server error", error: error.message });
+		console.error('Error in createProduct controller:', error.message);
+		res.status(500).json({ message: 'Server error', error: error.message });
 	}
 };
+
+export const putProduct = async (req, res) => {
+	const { id } = req.params;
+	try {
+		const { name, description, price, discount, stock, images, cloudinary_id } = req.body;
+		const product = await Product.findById(id);
+		if (!product) {
+			return res.status(404).json({
+				message: 'Product not found',
+				error: 'Product not found',
+			});
+		}
+
+		// Check if images are provided before using cloudinary api
+		if (!images || images.length === 0) {
+			return res.status(400).json({
+				message: 'No images provided.',
+				error: 'No images provided.',
+			});
+		}
+
+		// If product does exist then delete the old images from cloudinary and upload new ones 
+		// Get the id of new images and update the product and save it
+		// After new images are uploaded, delete the old images from cloudinary
+
+		const newCloudinary_id = uuidv4();
+
+		const uploadPromises = images.map((image, index) => {
+			return new Promise((resolve, reject) => {
+				const base64Data = image.replace(/^data:.*;base64,/, '');
+				const uploadStream = cloudinary.uploader.upload_stream(
+					{
+						folder: `products/`,
+						public_id: `${newCloudinary_id}_${index}}`,
+					},
+					(error, result) => {
+						if (error) return reject(error);
+						resolve(result.secure_url);
+					}
+				);
+				const buffer = Buffer.from(base64Data, 'base64');
+				uploadStream.end(buffer);
+			});
+		});
+
+		const uploadedUrls = await Promise.all(uploadPromises);
+
+		// Delete old images from cloudinary
+		await cloudinary.api.delete_resources_by_prefix(`products/${cloudinary_id}`);
+		console.log("deleted image from cloduinary");
+
+		// Update the product
+		product.name = name;
+		product.description = description;
+		product.price = parseFloat(price);
+		product.discount = discount ? discount : 0;
+		product.stock = stock;
+		product.images = uploadedUrls;
+		product.cloudinary_id = newCloudinary_id;
+
+		const updatedProduct = await product.save();
+		res.status(200).json(updatedProduct);
+
+	} catch (error) {
+		console.error('Error in patchProduct controller:', error.message);
+		res.status(500).json({ message: 'Error in Updaing Product', error: error.message });
+	}
+
+}
 
 export const deleteProduct = async (req, res) => {
 	try {
@@ -72,10 +185,10 @@ export const deleteProduct = async (req, res) => {
 			return res.status(404).json({ message: "Product not found" });
 		}
 
-		if (product.image) {
-			const publicId = product.image.split("/").pop().split(".")[0];
+		if (product.images.length > 0) {
+			const cloudinary_id = product.cloudinary_id;
 			try {
-				await cloudinary.uploader.destroy(`products/${publicId}`);
+				await cloudinary.api.delete_resources_by_prefix(`products/${cloudinary_id}`);
 				console.log("deleted image from cloduinary");
 			} catch (error) {
 				console.log("error deleting image from cloduinary", error);
