@@ -17,10 +17,7 @@ const ProductPage = () => {
     const skeleton = (
         <div className="flex gap-4 flex-row items-center justify-center my-10">
             <div className="flex w-[85%] flex-col gap-4">
-                <div className="skeleton h-80 w-full"></div>
-                <div className="skeleton h-4 w-28"></div>
-                <div className="skeleton h-4 w-full"></div>
-                <div className="skeleton h-4 w-full"></div>
+                <div className="skeleton h-[90vh] w-full"></div>
             </div>
         </div>
     )

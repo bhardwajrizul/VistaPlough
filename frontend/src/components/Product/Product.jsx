@@ -30,25 +30,23 @@ const Product = ({ productData }) => {
                 <div className="sticky top-0 images-container basis-[55%] py-4 flex flex-row justify-center items-start">
                     <ImagePreview imagesURLs={productData.images} />
                 </div>
-                <div className="product-details-container rounded-[25px] py-10 u-border-accent u-box-shadow basis-[45%] u-bg-secondary px-10 mt-4">
+                <div className="product-details-container rounded-[25px] py-10 u-border-accent u-box-shadow basis-[45%] u-bg-secondary px-10 mt-4"> 
                     <div className="buy-now-parent flex flex-col">
                         <div className="flex flex-row justify-start gap-4 items-center">
-                            <h1 className="underline u-font-sarasvati text-3xl mb-2 mt-2 u-text-accent u-text-shadow text-start">
+                            <h1 className="u-font-secondary text-3xl mb-2 mt-2 u-text-accent u-text-shadow text-start">
                                 {productData.name}
                             </h1>
                         </div>
 
                         <div className="flex flex-row justify-start gap-4 mt-2 items-center">
 
-                            <p className="u-font-itangiuh text-xl text-tertiary">
+                            <p className="u-font-wasted text-2xl text-tertiary">
                                 {formatter.format(Math.floor(productData.price - (productData.price * (productData.discount / 100)) + 1))}
                             </p>
-                            <p className="u-font-itangiuh text-md text-slate-600 line-through">
+                            <p className="u-font-wasted text-lg text-slate-600 line-through">
                                 {formatter.format(Math.floor(productData.price + 1))}
                             </p>
-                            <p className="u-font-wasted text-xs text-slate-600">
-                                MRP (Incl. of all taxes)
-                            </p>
+
                             <div className="u-bg-tertiary text-xs u-font-itangiuh text-white u-border-accent px-2 py-2   rounded-full">
                                 <span className="u-font-wasted text-xs text-white">
                                     Save&nbsp;
@@ -56,6 +54,9 @@ const Product = ({ productData }) => {
                                 {productData.discount}%
                             </div>
                         </div>
+                        <p className="u-font-wasted text-xs text-slate-600">
+                            MRP (Incl. of all taxes)
+                        </p>
                         <div>
                             <h2 className="u-font-itangiuh text-2xl text-start mt-4 u-text-accent">
                                 About this item

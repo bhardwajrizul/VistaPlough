@@ -194,3 +194,28 @@ export const updateAddress = async (req, res) => {
 		res.status(500).json({ message: "Error updating address", error: error.message });
 	}
 }
+
+export const updatePassword = async (req, res) => {
+	try {
+		const { currentPassword, newPassword, confirmPassword } = req.body;
+		const user = req.user;
+		const mongoDBUser = await User.findById(user._id);
+		if (!user) {
+			return res.status(401).json({ message: "Unauthorized" });
+		}
+		if (!mongoDBUser) {
+			return res.status(404).json({ message: "User not found" });
+		}
+		if (newPassword !== confirmPassword) {
+			return res.status(400).json({ message: "Passwords do not match" });
+		}
+		if (await mongoDBUser.comparePassword(currentPassword)) {
+			mongoDBUser.password = newPassword;
+			await mongoDBUser.save();
+			res.status(200).json({ message: "Password updated successfully" });
+		}
+	} catch (error) {
+		console.error("Error in updatePassword controller", error.message);
+		res.status(500).json({ message: "Error updating password", error: error.message });
+	}
+}

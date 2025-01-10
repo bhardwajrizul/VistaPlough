@@ -1,16 +1,18 @@
-import { BarChart, PlusCircle, ShoppingBasket } from "lucide-react";
+import { BarChart, PlusCircle, ShoppingBasket, UsersIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import AnalyticsTab from "../components/AnalyticsTab";
 import CreateProductForm from "../components/CreateProductForm";
 import ProductsList from "../components/ProductsList";
+import UsersInfoTab from "../components/Admin/UsersInfoTab";
 import { useProductStore } from "../stores/useProductStore";
 
 const tabs = [
 	{ id: "create", label: "Create Product", icon: PlusCircle },
 	{ id: "products", label: "Products", icon: ShoppingBasket },
 	{ id: "analytics", label: "Analytics", icon: BarChart },
+	{ id: "users", label: "Users", icon: UsersIcon }
 ];
 
 const AdminPage = () => {
@@ -38,11 +40,10 @@ const AdminPage = () => {
 						<button
 							key={tab.id}
 							onClick={() => setActiveTab(tab.id)}
-							className={`flex u-font-wasted items-center px-4 py-2 mx-2 rounded-md transition-colors duration-200 ${
-								activeTab === tab.id
+							className={`flex u-font-wasted items-center px-4 py-2 mx-2 rounded-md transition-colors duration-200 ${activeTab === tab.id
 									? "u-bg-accent text-white"
 									: "bg-gray-700 text-gray-300 hover:bg-gray-600"
-							}`}
+								}`}
 						>
 							<tab.icon className='mr-2 h-5 w-5 stroke-white' />
 							{tab.label}
@@ -52,6 +53,7 @@ const AdminPage = () => {
 				{activeTab === "create" && <CreateProductForm />}
 				{activeTab === "products" && <ProductsList />}
 				{activeTab === "analytics" && <AnalyticsTab />}
+				{activeTab === "users" && <UsersInfoTab />}
 			</div>
 		</div>
 	);

@@ -115,6 +115,23 @@ export const useUserStore = create((set, get) => ({
 			set({ loading: false });
 			toast.error(error.response?.data?.message || "An error occurred");
 		}
+	},
+	updatePassword: async ({currentPassword, newPassword, confirmPassword}) => {
+		set({ loading: true });
+
+		if (newPassword !== confirmPassword) {
+			set({ loading: false });
+			return toast.error("Passwords do not match");
+		}
+
+		try {
+			await axios.patch("/auth/profile", { currentPassword, newPassword, confirmPassword });
+			set({ loading: false });
+			toast.success("Password updated successfully");
+		} catch (error) {
+			set({ loading: false });
+			toast.error(error.response?.data?.message || "An error occurred");
+		}
 	}
 }));
 

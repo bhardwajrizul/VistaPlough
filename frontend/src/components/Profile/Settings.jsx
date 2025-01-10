@@ -2,20 +2,41 @@ import { motion } from "framer-motion";
 
 import { useState } from "react";
 
+import { useUserStore } from "../../stores/useUserStore";
+import { Loader } from "lucide-react";
+
 const Settings = () => {
 
-    const [updatePassword, setupdatePassword] = useState({
+    const { updatePassword, loading } = useUserStore();
+
+    const [updatePass, setupdatePass] = useState({
         oldPassword: "",
         password: "",
         confirmPassword: "",
     });
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await updatePassword({
+            currentPassword: updatePass.oldPassword,
+            newPassword: updatePass.password,
+            confirmPassword: updatePass.confirmPassword
+        });
+        setupdatePass({
+            oldPassword: "",
+            password: "",
+            confirmPassword: "",
+        })
+    }
+
     return (
-        <motion.div
+        <motion.form
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="basis-[65%] flex flex-col gap-4 p-4">
+            className="basis-[65%] flex flex-col gap-4 p-4"
+            onSubmit={handleSubmit}
+        >
             <motion.h1
                 initial={{ opacity: 0, y: -40, x: -40 }}
                 animate={{ opacity: 1, y: 0, x: 0 }}
@@ -29,8 +50,8 @@ const Settings = () => {
             <input
                 id="old-password-input"
                 type="password"
-                value={updatePassword.oldPassword}
-                onChange={(e) => setupdatePassword({ ...updatePassword, oldPassword: e.target.value })}
+                value={updatePass.oldPassword}
+                onChange={(e) => setupdatePass({ ...updatePass, oldPassword: e.target.value })}
                 className={`u-input w-full rounded-[10px] text-xl py-2 px-2 u-border-accent-bold u-font-wasted outline-none`}
             />
             <label htmlFor="password-input" className="u-font-wasted">
@@ -39,8 +60,8 @@ const Settings = () => {
             <input
                 id="password-input"
                 type="password"
-                value={updatePassword.password}
-                onChange={(e) => setupdatePassword({ ...updatePassword, password: e.target.value })}
+                value={updatePass.password}
+                onChange={(e) => setupdatePass({ ...updatePass, password: e.target.value })}
                 className={`u-input w-full text-xl rounded-[10px] py-2 px-2 u-border-accent-bold u-font-wasted outline-none`}
             />
             <label htmlFor="confirm-password-input" className="u-font-wasted">
@@ -49,21 +70,30 @@ const Settings = () => {
             <input
                 id="confirm-password-input"
                 type="password"
-                value={updatePassword.confirmPassword}
-                onChange={(e) => setupdatePassword({ ...updatePassword, confirmPassword: e.target.value })}
+                value={updatePass.confirmPassword}
+                onChange={(e) => setupdatePass({ ...updatePass, confirmPassword: e.target.value })}
                 className={`u-input w-full text-xl rounded-[10px] py-2 px-2 u-border-accent-bold u-font-wasted outline-none`}
             />
             <div className="flex flex-row justify-center gap-4">
                 <button
-                    type="button"
-                    onClick={() => setupdatePassword({ ...updatePassword, disabled: !updatePassword.disabled })}
+                    type="submit"
                     className={`u-bg-tertiary text-center px-10 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-3 u-font-sarasvati text-lg u-text-white
                                 transition duration-150 ease-in-out disabled:opacity-50`}
+                    disabled={loading}
                 >
-                    {'Update Password'}
+                    {
+                        loading
+                            ? (
+                                <>
+                                    <Loader className='mr-2 h-6 w-6 animate-spin inline' aria-hidden='true' />
+                                    Updating Password...
+                                </>
+                            )
+                            : 'Update Password'
+                    }
                 </button>
             </div>
-        </motion.div>
+        </motion.form>
     )
 }
 

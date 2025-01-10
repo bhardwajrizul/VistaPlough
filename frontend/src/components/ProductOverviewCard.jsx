@@ -54,7 +54,7 @@ const ProductOverviewCard = ({ product }) => {
                 }
             </div>
             <Link to={`/products/${product._id}`}>
-                <h2 className='u-font-sarasvati text-start mt-4 mx-8 text-xl u-text-accent'>{product.name}</h2>
+                <h2 className='u-font-secondary text-start mt-4 mx-8 text-xl u-text-accent'>{product.name}</h2>
             </Link>
             <div className='flex flex-row justify-between items-end w-full'>
                 <div className='ms-8 flex flex-col justify-start w-full'>
