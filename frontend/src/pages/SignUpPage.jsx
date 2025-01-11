@@ -31,12 +31,12 @@ const SignUpPage = () => {
 			</motion.div>
 
 			<motion.div
-				className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'
+				className='mt-8 sm:mx-auto sm:w-[95%] sm:max-w-md'
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.8, delay: 0.2 }}
 			>
-				<div className='u-bg-white u-box-shadow u-border-accent py-8 px-4 rounded-[25px] sm:px-10'>
+				<div className='u-bg-white mx-auto w-[95%] u-box-shadow u-border-accent py-8 px-4 rounded-[25px] sm:px-10'>
 					<form onSubmit={handleSubmit} className='space-y-6'>
 						<div>
 							<label htmlFor='name' className='block text-slate-600 text-xl u-font-wasted'>

@@ -39,7 +39,7 @@ const CartItem = ({ item }) => {
 				</div>
 
 				<div className='w-full min-w-0 flex-1 space-y-2 md:order-2 md:max-w-md'>
-					<p className='u-font-sarasvati text-2xl u-text-accent hover:underline'>
+					<p className='u-font-itangiuh text-2xl u-text-accent hover:underline'>
 						{item.name}
 					</p>
 					<p className='text-md u-font-wasted text-slate-600'>{item.description}</p>

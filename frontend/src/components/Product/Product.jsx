@@ -26,11 +26,11 @@ const Product = ({ productData }) => {
         >
 
 
-            <div className="w-full relative flex flex-row justify-around items-start py-4 flex-warp">
+            <div className="w-full relative flex flex-col lg:flex-row justify-around items-start pb-4 lg:py-4 flex-warp">
                 <div className="sticky top-0 images-container basis-[55%] py-4 flex flex-row justify-center items-start">
                     <ImagePreview imagesURLs={productData.images} />
                 </div>
-                <div className="product-details-container rounded-[25px] py-10 u-border-accent u-box-shadow basis-[45%] u-bg-secondary px-10 mt-4"> 
+                <div className="product-details-container rounded-[25px] py-10 u-border-accent u-box-shadow lg:basis-[45%] u-bg-secondary px-10 mt-4"> 
                     <div className="buy-now-parent flex flex-col">
                         <div className="flex flex-row justify-start gap-4 items-center">
                             <h1 className="u-font-secondary text-3xl mb-2 mt-2 u-text-accent u-text-shadow text-start">

@@ -4,13 +4,13 @@ import YoutubeLogo from '../assets/Images/youtube.svg'
 import TwitterLogo from '../assets/Images/twitter.svg'
 import LinkedInLogo from '../assets/Images/linkedin.svg'
 import InstaLogo from '../assets/Images/insta.svg'
-import LogoFull from '../assets/Images/logo-full.svg'
+import LogoFull from '../assets/Images/logo.webp'
 
 const Footer= () => {
     return (
-        <footer className='u-bg-white mt-10 w-[85%] mx-auto my-4 rounded-[15px] u-border-accent min-h-40 py-5 u-box-shadow'>
+        <footer className='u-bg-white mt-10 w-[95%] lg:w-[85%] mx-auto my-4 rounded-[15px] u-border-accent min-h-40 py-5 u-box-shadow'>
             <div className='flex flex-col items-center justify-between gap-5'   >
-                <div className='flex flex-row w-full px-4 items-start justify-around gap-5'>
+                <div className='flex flex-col items-center lg:items-start justify-center lg:flex-row w-full px-4 items-start justify-around gap-5'>
                     <div className='flex flex-col items-center justify-center gap-2'>
                         <p className='u-font-sarasvati text-xl u-text-accent'>
                             Follow Us
@@ -83,7 +83,7 @@ const Footer= () => {
                         </a>
                     </div>
 
-                    <img src={LogoFull} alt="Company Logo" className='w-32 scale-150' />
+                    <img src={LogoFull} alt="Company Logo" className='w-32' />
                 </div>
 
                 <p className='u-font-wasted text-xs text-center u-text-black'>

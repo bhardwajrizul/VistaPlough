@@ -237,3 +237,10 @@
   background-blend-mode: multiply;
   background-position: 50% 70%;
 }
+
+@media (max-width: 768px) {
+  .u-border-layout {
+    all: unset;
+    position: relative;
+  }
+}

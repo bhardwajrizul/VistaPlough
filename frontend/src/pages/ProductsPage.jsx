@@ -26,7 +26,7 @@ const ProductsPage = () => {
     ));
 
     return (
-        <div className="grid grid-cols-3 w-[85%] u-bg-white u-border-accent rounded-[15px] mx-auto gap-4 mt-10 justify-items-center">
+        <div className="grid lg:grid-cols-3 w-[95%] lg:w-[85%] u-bg-white u-border-accent rounded-[15px] mx-auto gap-4 mt-10 justify-items-center">
             {
                 loading
                     ? renderSkeleton

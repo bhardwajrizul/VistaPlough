@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import LogoImage from '../assets/Images/logo.svg'
+import LogoImage from '../assets/Images/logo.webp'
 
 import { Link } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ const NavbarLogoWithLink = () => {
                 <img
                     src={LogoImage}
                     alt="Vista Plow Logo"
-                    className={`w-36 rounded-full u-border-accent-bold ${!logoLoaded ? 'hidden' : 'inline-block'}`}
+                    className={`w-[50px] rounded-full ${!logoLoaded ? 'hidden' : 'inline-block'}`}
                     onLoad={() => setLogoLoaded(true)} />
             </Link>
         </Fragment>

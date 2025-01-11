@@ -12,7 +12,7 @@ import ProductsPage from "./pages/ProductsPage";
 import CartPage from "./pages/CartPage";
 import ProfilePage from "./pages/ProfilePage";
 
-import Navbar from "./components/Navbar";
+import NavbarContainer from "./components/NavbarContainer";
 import Footer from "./components/Footer";
 import LoadingSpinner from "./components/LoadingSpinner";
 import General from "./components/Profile/General";
@@ -48,7 +48,10 @@ function App() {
 				</div>
 			</div>
 			<div className='relative z-50 pt-0 w-full '>
-				<Navbar />
+				{
+					<NavbarContainer />
+					
+				}
 				<Routes>
 					<Route path='/' element={<HomePage />} />
 					<Route path='/signup' element={!user ? <SignUpPage /> : <Navigate to='/' />} />

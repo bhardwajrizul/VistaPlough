@@ -25,7 +25,7 @@ const ProductPage = () => {
     if (loading || !product) return skeleton;
 
     return (
-        <div className="w-[85%] mx-auto my-10">
+        <div className="w-[95%] lg:w-[85%] mx-auto my-10">
             <Product productData={product} />
         </div>
     )

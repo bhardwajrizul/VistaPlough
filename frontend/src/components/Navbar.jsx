@@ -29,10 +29,12 @@ const Navbar = () => {
 	}
 
 	return (
-		<header className='relative u-box-shadow top-0 left-0 w-[85%] mx-auto rounded-[15px] u-bg-white bg-opacity-90 backdrop-blur-md z-40 transition-all duration-300 u-border-accent'>
+		<header className='relative  u-box-shadow top-0 left-0 w-[95%] lg:w-[85%] mx-auto rounded-[15px] u-bg-white bg-opacity-90 backdrop-blur-md z-40 transition-all duration-300 u-border-accent'>
 			<div className='container mx-auto px-8 py-3'>
-				<div className='flex flex-wrap justify-between items-center'>
-					<LogoWithLink />
+				<div className='flex flex-row '>
+					{
+						<LogoWithLink />
+					}
 
 					<form
 						onSubmit={handleFormSubmit}
@@ -45,7 +47,7 @@ const Navbar = () => {
 							className="absolute right-0 m-2"><SearchIcon className="stroke-yellow-600 hover:translate-y-[-2px] active:translate-y-[0px] transition-all ease-in duration-75" /></button>
 					</form>
 
-					<nav className='flex flex-wrap items-center gap-5'>
+					<nav className='flex items-center gap-5'>
 						{
 							location.pathname !== '/products' &&
 							<Link

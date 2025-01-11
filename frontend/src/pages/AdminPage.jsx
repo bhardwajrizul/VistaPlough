@@ -35,12 +35,12 @@ const AdminPage = () => {
 					Admin Dashboard
 				</motion.h1>
 
-				<div className='flex justify-center mb-8'>
+				<div className='flex flex-wrap justify-center mb-8'>
 					{tabs.map((tab) => (
 						<button
 							key={tab.id}
 							onClick={() => setActiveTab(tab.id)}
-							className={`flex u-font-wasted items-center px-4 py-2 mx-2 rounded-md transition-colors duration-200 ${activeTab === tab.id
+							className={`flex my-2 u-font-wasted items-center px-4 py-2 mx-2 rounded-md transition-colors duration-200 ${activeTab === tab.id
 									? "u-bg-accent text-white"
 									: "bg-gray-700 text-gray-300 hover:bg-gray-600"
 								}`}
