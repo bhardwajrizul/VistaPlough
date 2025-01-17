@@ -11,6 +11,9 @@
   --tertiary-light: #7f5b984a;
   --black: #050316;
   --white: #ffffff;
+  --n-p: #2a431c;
+  --n-s: #058036;
+  --n-s-l: #1e9b50;
   --padding: 18px;
 }
 
@@ -28,10 +31,8 @@
 }
 
 .u-text-accent {
-  color: var(--accent);  
+  color: var(--accent);
 }
-
-
 
 .u-text-tertiary {
   color: var(--tertiary);
@@ -54,11 +55,11 @@
 }
 
 .u-bg-accent {
-  background-color: var(--accent);
+  background-color: var(--n-s);
 }
 
 .u-bg-accent-light {
-  background-color: var(--accent-light);
+  background-color: var(--n-s-l);
 }
 
 .u-bg-tertiary {
@@ -78,19 +79,20 @@
 }
 
 .u-box-shadow {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, .25);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 .u-text-shadow {
-  text-shadow: 0px 2px 8px rgba(0, 0, 0, .25);
+  text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 @font-face {
-  font-family: 'Playwrite Australia SA';
-  src: local('Playwrite Australia SA Regular'), local('Playwrite-Australia-SA-Regular'),
-      url('./assets/fonts/PlaywriteAUSA-Regular.woff2') format('woff2'),
-      url('./assets/fonts/PlaywriteAUSA-Regular.woff') format('woff'),
-      url('./assets/fonts/PlaywriteAUSA-Regular.ttf') format('truetype');
+  font-family: "Playwrite Australia SA";
+  src: local("Playwrite Australia SA Regular"),
+    local("Playwrite-Australia-SA-Regular"),
+    url("./assets/fonts/PlaywriteAUSA-Regular.woff2") format("woff2"),
+    url("./assets/fonts/PlaywriteAUSA-Regular.woff") format("woff"),
+    url("./assets/fonts/PlaywriteAUSA-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
@@ -110,8 +112,8 @@
   font-weight: normal;
   src: local("itangiuh Personal Use only Regular"),
     url("./assets/fonts/ItangiuhPersonalUseOnly-PKeZm.woff") format("woff"),
-    url("./assets/fonts/ItangiuhRegularPersonalUseOnly-0WmV9.otf") format("opentype");
-    
+    url("./assets/fonts/ItangiuhRegularPersonalUseOnly-0WmV9.otf")
+      format("opentype");
 }
 
 @font-face {
@@ -119,34 +121,49 @@
   font-style: normal;
   font-weight: normal;
   src: local("Wasted Vindey"),
-    url('./assets//fonts/Wasted Vindey.woff2') format('woff2'),
-    url('./assets/fonts/Wasted Vindey.ttf') format('truetype');
+    url("./assets//fonts/Wasted Vindey.woff2") format("woff2"),
+    url("./assets/fonts/Wasted Vindey.ttf") format("truetype");
 }
 
 .u-font-sarasvati {
-  font-family: "Playwrite Australia SA Regular", serif;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .u-font-itangiuh {
-  font-family: "Itangiuh", serif;
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-weight: 300;
 }
 
 .u-font-secondary {
-  font-family: "Itangiuh", serif;
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 300;
+  font-variation-settings: "wdth" 100;
 }
 
 .u-font-wasted {
-  font-family: "Wasted Vindey", serif;
+  font-family: "Open Sans", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
 }
 
 .u-border-layout {
-  border: 15px solid var(--accent);
+  border: 15px solid var(--n-p);
   border-radius: 0px;
   padding: 30px 30px 0 30px;
 }
 
 .u-border-accent {
-  border: 1px solid var(--accent);
+  border: 1px solid var(--accent-light);
 }
 
 .u-border-accent-bold {
@@ -157,32 +174,31 @@
   outline: none;
 }
 
-
 .jaggery-image {
   position: absolute;
   width: 200% !important; /* Twice the width of the container */
   max-width: 200% !important; /* Twice the width of the container */
   /* height: 200%;  */
-  top: -55%; 
-  left: 10%; 
-  animation: rotate 30s cubic-bezier(.79,.1,.21,.88) infinite reverse; /* Adjust the duration as needed */
+  top: -55%;
+  left: 10%;
+  animation: rotate 30s cubic-bezier(0.79, 0.1, 0.21, 0.88) infinite reverse; /* Adjust the duration as needed */
 }
 
 @keyframes rotate {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   25% {
-      transform: rotate(90deg);
+    transform: rotate(90deg);
   }
   50% {
-      transform: rotate(180deg);
+    transform: rotate(180deg);
   }
   75% {
-      transform: rotate(270deg);
+    transform: rotate(270deg);
   }
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -232,14 +248,12 @@
   background-position: center;
 }
 
-
 #card-2 {
   background: url(./baking.webp) no-repeat center center / cover;
   background-color: var(--tertiary-light);
   background-blend-mode: multiply;
   background-position: center;
 }
-
 
 #card-3 {
   background: url(./healthy-food.webp) no-repeat center center / cover;

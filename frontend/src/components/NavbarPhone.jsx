@@ -2,6 +2,7 @@ import { LucideUser, UserPlus, LogIn, SearchIcon } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUserStore } from "../stores/useUserStore";
 import { useCartStore } from "../stores/useCartStore";
+import { LucideLayoutDashboard } from "lucide-react";
 
 import LogoWithLink from './Logo';
 
@@ -62,7 +63,7 @@ const Navbar = () => {
                                     <Link
                                         to={"/products"}
                                         className='flex flex-row items-center justify-start'>
-                                        <img src={ShopImage} alt='Home' className='w-8 h-8 inline-block' />
+                                        <img src={ShopImage} alt='Products' className='w-8 h-8 inline-block' />
                                         <span className="u-font-itangiuh u-text-tertiary mt-1">
                                             Products
                                         </span>
@@ -72,7 +73,7 @@ const Navbar = () => {
                                     location.pathname === '/products' &&
                                     <Link
                                         to={"/"}
-                                        className='flex flex-row items-center justify-center'>
+                                        className='flex flex-row items-center justify-start'>
                                         <img src={HomeImage} alt='Home' className='w-8 h-8 inline-block' />
                                         <span className="u-font-itangiuh u-text-tertiary mt-1">
                                             Home
@@ -87,7 +88,7 @@ const Navbar = () => {
                                         className='relative group text-gray-300 hover:u-text-accent transition duration-300 
 							ease-in-out '
                                     >
-                                        <div>   
+                                        <div>
                                             <img src={CartImage} alt='Cart' className='w-8 h-8 inline-block' />
                                             <span className="u-font-itangiuh u-text-accent mt-2">
                                                 Cart
@@ -95,7 +96,7 @@ const Navbar = () => {
                                         </div>
                                         {cart.length > 0 && (
                                             <span
-                                                className='absolute -top-2 -left-2 u-bg-accent text-white rounded-full px-2 py-0.5 
+                                                className='absolute top-0 left-0 u-bg-accent text-white rounded-full px-2 py-0.5 
 									text-xs group-hover:u-bg-primary transition duration-300 ease-in-out'
                                             >
                                                 {cart.length}
@@ -110,7 +111,8 @@ const Navbar = () => {
                                         className='u-bg-accent shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white '
                                         to={"/secret-dashboard"}
                                     >
-                                        <span className='sm:inline u-text-white'>Dashboard</span>
+                                        <LucideLayoutDashboard className="fill-white stroke-white" size={22} />
+                                        <span className='sm:inline u-font-secondary u-text-white'>Dashboard</span>
                                     </Link>
                                 )}
                             </li>
@@ -121,7 +123,7 @@ const Navbar = () => {
                                         className='my-2 flex flex-row items-center u-bg-primary shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white '
                                     >
                                         <LucideUser className="fill-white stroke-white" size={22} />
-                                        <span className='text-white sm:inline ml-2 pt-1'>{user.name.split(" ")[0]}</span>
+                                        <span className='text-white u-font-secondary sm:inline'>{user.name.split(" ")[0]}</span>
                                     </Link>
 
                                 ) : (

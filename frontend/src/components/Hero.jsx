@@ -8,7 +8,7 @@ const Hero = () => {
     return (
         <div id='hero' className='w-[95%] lg:w-[85%] h-auto lg:h-96 u-bg-white u-box-shadow mx-auto overflow-hidden mt-8 rounded-[15px] u-border-accent flex flex-row relative shadow-[0px_2px_4px_rgba(0,0,0,0.25)] '>
             <div id='hero-left' className='z-10 lg:w-[60%] lg:h-full flex flex-col lg:items-start lg:justify-around  py-10 px-2 lg:p-10 gap-8 lg:gap-0'>
-                <h1 className='u-font-sarasvati lg:text-4xl text-3xl u-text-shadow text-center'>
+                <h1 className='u-font-sarasvati lg:text-start text-center lg:text-4xl text-3xl u-text-shadow '>
                     Welcome to&nbsp;
                     <span className='underline block lg:inline-block u-text-accent'>
                         Vista Plough Pvt. Ltd.
