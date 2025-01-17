@@ -40,7 +40,7 @@ function App() {
 	if (checkingAuth) return <LoadingSpinner />;
 
 	return (
-		<div className='min-h-screen w-lvw u-bg-secondary text-white relative u-border-layout overflow-hidden'>
+		<div className='min-h-screen u-grad w-lvw u-bg-secondary text-white relative u-border-layout overflow-hidden'>
 			{/* Background gradient */}
 			<div className='absolute inset-0 overflow-hidden'>
 				<div className='absolute inset-0'>

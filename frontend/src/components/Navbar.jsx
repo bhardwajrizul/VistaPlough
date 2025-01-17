@@ -98,7 +98,7 @@ const Navbar = () => {
 								className='u-bg-accent shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white '
 								to={"/secret-dashboard"}
 							>
-								<span className='hidden sm:inline u-text-white'>Dashboard</span>
+								<span className='hidden u-font-secondary sm:inline u-text-white'>Dashboard</span>
 							</Link>
 						)}
 
@@ -108,21 +108,21 @@ const Navbar = () => {
 								className='flex flex-row items-center u-bg-primary shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white '
 							>
 								<LucideUser className="fill-white stroke-white" size={22} />
-								<span className='hidden text-white sm:inline ml-2 pt-1'>{user.name.split(" ")[0]}</span>
+								<span className='hidden u-font-secondary text-white sm:inline ml-2'>{user.name.split(" ")[0]}</span>
 							</Link>
 
 						) : (
 							<>
 								<Link
 									to={"/signup"}
-									className='flex flex-row items-center u-bg-accent shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white'
+									className='flex u-font-secondary flex-row items-center u-bg-accent shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white'
 								>
 									<UserPlus className='mr-2 stroke-white' size={22} />
 									Sign Up
 								</Link>
 								<Link
 									to={"/login"}
-									className='flex flex-row items-center u-bg-tertiary shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white'
+									className='flex flex-row u-font-secondary items-center u-bg-tertiary shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white'
 								>
 									<LogIn className='mr-2 stroke-white' size={22} />
 									Login

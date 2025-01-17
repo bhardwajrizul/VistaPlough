@@ -1,7 +1,7 @@
 
 import ArrowRight from "../assets/Images/arrow-right.svg";
 import TwigWithLeaves from "../assets/Images/red-twig-with-leaves.svg";
-import JaggeryImages from "../assets/Images/Rotating Images Frame.svg";
+import RotatingImages from "../assets/Images/Rotating Images Frame.svg";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
@@ -33,7 +33,7 @@ const Hero = () => {
             <img src={TwigWithLeaves} alt="Decoration" className='absolute w-16 lg:w-48 right-0 lg:left-[55%] bottom-0 -translate-x-1/2' />
             <div id='hero-right' className='relative lg:w-[40%] h-full overflow-hidden'>
                 <img className='jaggery-image'
-                    src={JaggeryImages}
+                    src={RotatingImages}
                     alt="Jaggery Images" />
             </div>
         </div>
