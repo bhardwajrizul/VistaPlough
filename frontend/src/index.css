@@ -86,6 +86,16 @@
 }
 
 @font-face {
+  font-family: 'Playwrite Australia SA';
+  src: local('Playwrite Australia SA Regular'), local('Playwrite-Australia-SA-Regular'),
+      url('./assets/fonts/PlaywriteAUSA-Regular.woff2') format('woff2'),
+      url('./assets/fonts/PlaywriteAUSA-Regular.woff') format('woff'),
+      url('./assets/fonts/PlaywriteAUSA-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "Sarasvati";
   font-style: normal;
   font-weight: normal;
@@ -114,7 +124,7 @@
 }
 
 .u-font-sarasvati {
-  font-family: "Sarasvati", serif;
+  font-family: "Playwrite Australia SA Regular", serif;
 }
 
 .u-font-itangiuh {
