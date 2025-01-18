@@ -66,8 +66,16 @@ const Promise = () => {
                     </div>
                 </div>
                 <div id='heading-with-btn' className='w-[95%] lg:w-[85%] lg:h-20 u-bg-secondary rounded-[15px] flex flex-col lg:flex-row justify-around u-border-accent items-center gap-5 px-2 lg:px-6 py-4 lg:py-12 shadow-[0px_2px_0px_rgba(0,0,0,0.3)]'>
-                    <p className='u-font-itangiuh text-md text-center text-slate-600 u-text-shadow'>
-                        We are committed to delivering health, heritage, and happiness to your doorstep.  With Vista Plough, you {"don't"} just buy a product—you embrace a tradition.
+                    <p className='u-font-itangiuh text-lg text-center text-slate-600 u-text-shadow'>
+                        We are committed to delivering health, heritage, and happiness to your doorstep. 
+                        <span className='u-bg-green u-text-white py-[2px] rounded-lg box-decoration-clone'>
+                            &nbsp;With Vista Plough&nbsp;
+                        </span>
+                        , you {"don't"} just buy a product, 
+                        <span className='u-bg-primary u-text-white py-[2px] rounded-lg box-decoration-clone'>
+                            &nbsp;you embrace a tradition.&nbsp;
+                        </span>
+                        
 
                     </p>
                     <Link
