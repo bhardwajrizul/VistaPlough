@@ -54,7 +54,7 @@ const ProductOverviewCard = ({ product }) => {
                 }
             </div>
             <Link to={`/products/${product._id}`}>
-                <h2 className='u-font-secondary text-start mt-4 mx-8 text-3xl u-text-black'>{product.name}</h2>
+                <h2 className='u-font-sarasvati u-font-sb text-start mt-4 mx-8 text-2xl u-text-black'>{product.name}</h2>
             </Link>
             <div className='flex flex-row justify-between items-end w-full'>
                 <div className='ms-8 flex flex-col justify-start w-full'>
@@ -67,11 +67,11 @@ const ProductOverviewCard = ({ product }) => {
                             user ? (
                                 <button
                                     onClick={() => addToCart(product)}
-                                    className='h-fit u-bg-black shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl me-8 px-4 py-2 u-font-sarasvati text-sm u-text-white whitespace-nowrap'>
+                                    className='h-fit u-bg-green shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl me-8 px-4 py-2 u-font-secondary text-sm u-text-white whitespace-nowrap'>
                                     Add to Cart
                                 </button>
                             ) : (
-                                <Link to={`/products/${product._id}`} className='h-fit u-bg-green shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl me-8 px-4 py-2 u-font-sarasvati text-sm u-text-white whitespace-nowrap'>
+                                <Link to={`/products/${product._id}`} className='h-fit u-bg-green shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl me-8 px-4 py-2 u-font-secondary text-sm u-text-white whitespace-nowrap'>
                                     Show More
                                 </Link>
                             )

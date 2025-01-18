@@ -17,6 +17,7 @@ import Footer from "./components/Footer";
 import LoadingSpinner from "./components/LoadingSpinner";
 import General from "./components/Profile/General";
 import Orders from "./components/Profile/Orders";
+import ScrollToTop from "./components/ScrollToTop";
 
 import { Toaster } from "react-hot-toast";
 
@@ -41,16 +42,10 @@ function App() {
 
 	return (
 		<div className='min-h-screen u-grad w-lvw u-bg-secondary text-white relative u-border-layout overflow-hidden'>
-			{/* Background gradient */}
-			<div className='absolute inset-0 overflow-hidden'>
-				<div className='absolute inset-0'>
-					<div className='absolute top-0 left-1/2 -translate-x-1/2 w-full h-full' />
-				</div>
-			</div>
+			<ScrollToTop />
 			<div className='relative z-50 pt-0 w-full '>
 				{
 					<NavbarContainer />
-					
 				}
 				<Routes>
 					<Route path='/' element={<HomePage />} />

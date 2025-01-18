@@ -113,10 +113,10 @@ const General = ({ user }) => {
                             <button
                                 type="button"
                                 onClick={() => setUserData({ ...userData, disabled: false })}
-                                className={`u-bg-tertiary text-center px-4 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-sarasvati text-lg u-text-white 
+                                className={`u-bg-tertiary text-center px-4 lg:px-8 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-secondary text-lg u-text-white 
 							transition duration-150 ease-in-out disabled:opacity-50`}
                             >
-                                Edit Personal Details
+                                Edit Details
                             </button>
                         )
                     }
@@ -124,7 +124,7 @@ const General = ({ user }) => {
                         !userData.disabled && !loading && (
                             <button
                                 type="submit"
-                                className={`u-bg-tertiary text-center px-4 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-sarasvati text-lg u-text-white 
+                                className={`u-bg-tertiary text-center px-4 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-secondary text-lg u-text-white 
 							transition duration-150 ease-in-out disabled:opacity-50 u-bg-primary`}
                             >
 
@@ -152,7 +152,7 @@ const General = ({ user }) => {
                                         disabled: true
                                     }
                                 )}
-                                className={`u-bg-tertiary text-center px-4 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-sarasvati text-lg u-text-white 
+                                className={`u-bg-tertiary text-center px-4 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-secondary text-lg u-text-white 
 							transition duration-150 ease-in-out disabled:opacity-50  ${userData.disabled ? 'u-bg-tertiary' : 'u-bg-primary'}`}
                             >
                                 Cancel
@@ -163,7 +163,7 @@ const General = ({ user }) => {
                         userData.disabled && !loading &&
                         <button
                             type="button"
-                            className={`u-bg-tertiary text-center px-10 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-sarasvati text-lg u-text-white 
+                            className={`u-bg-tertiary text-center px-2 lg:px-10 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-secondary text-lg u-text-white 
 							transition duration-150 ease-in-out disabled:opacity-50 `}
                         >
                             Verify Number

@@ -2,24 +2,22 @@ import { LucideUser, UserPlus, LogIn, SearchIcon } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUserStore } from "../stores/useUserStore";
 import { useCartStore } from "../stores/useCartStore";
-import { LucideLayoutDashboard } from "lucide-react";
+import { HomeIcon, StoreIcon, ShoppingCartIcon, LucideLayoutDashboard, Loader, ListIcon, LogOutIcon } from "lucide-react";
+
 
 import LogoWithLink from './Logo';
 
-import HomeImage from '../assets/Images/home.svg';
-import ShopImage from '../assets/Images/shop.svg';
-import CartImage from '../assets/Images/cart.svg';
 import { useState } from "react";
 
-import { ListIcon } from "lucide-react";
 
 
 const Navbar = () => {
 
 
-    const { user } = useUserStore();
+    const { user, logout, loading } = useUserStore();
     const isAdmin = user?.role === "admin";
     const { cart } = useCartStore();
+
 
     const location = useLocation();
 
@@ -63,7 +61,7 @@ const Navbar = () => {
                                     <Link
                                         to={"/products"}
                                         className='flex flex-row items-center justify-start'>
-                                        <img src={ShopImage} alt='Products' className='w-8 h-8 inline-block' />
+                                        <StoreIcon stroke="#7f5b98" />
                                         <span className="u-font-itangiuh u-text-tertiary mt-1">
                                             Products
                                         </span>
@@ -74,8 +72,8 @@ const Navbar = () => {
                                     <Link
                                         to={"/"}
                                         className='flex flex-row items-center justify-start'>
-                                        <img src={HomeImage} alt='Home' className='w-8 h-8 inline-block' />
-                                        <span className="u-font-itangiuh u-text-tertiary mt-1">
+                                        <HomeIcon stroke="#7f5b98"   />
+                                        <span className="u-font-itangiuh u-text-tertiary">
                                             Home
                                         </span>
                                     </Link>
@@ -85,18 +83,16 @@ const Navbar = () => {
                                 {user && (
                                     <Link
                                         to={"/cart"}
-                                        className='relative group text-gray-300 hover:u-text-accent transition duration-300 
+                                        className='relative flex items-center justify-start group text-gray-300 hover:u-text-accent transition duration-300 
 							ease-in-out '
                                     >
-                                        <div>
-                                            <img src={CartImage} alt='Cart' className='w-8 h-8 inline-block' />
-                                            <span className="u-font-itangiuh u-text-accent mt-2">
-                                                Cart
-                                            </span>
-                                        </div>
+                                        <ShoppingCartIcon stroke="green" />
+                                        <span className="u-font-itangiuh u-text-accent">
+                                            Cart
+                                        </span>
                                         {cart.length > 0 && (
                                             <span
-                                                className='absolute top-0 left-0 u-bg-accent text-white rounded-full px-2 py-0.5 
+                                                className='absolute -top-1 -left-1 u-bg-accent text-white rounded-full px-2 py-0.5 
 									text-xs group-hover:u-bg-primary transition duration-300 ease-in-out'
                                             >
                                                 {cart.length}
@@ -118,13 +114,28 @@ const Navbar = () => {
                             </li>
                             <li>
                                 {user ? (
-                                    <Link
-                                        to={'/profile'}
-                                        className='my-2 flex flex-row items-center u-bg-primary shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white '
-                                    >
-                                        <LucideUser className="fill-white stroke-white" size={22} />
-                                        <span className='text-white u-font-secondary sm:inline'>{user.name.split(" ")[0]}</span>
-                                    </Link>
+                                    <>
+                                        <Link
+                                            to={'/profile'}
+                                            className='my-2 flex flex-row items-center u-bg-primary shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white '
+                                        >
+                                            <LucideUser className="fill-white stroke-white" size={22} />
+                                            <span className='text-white u-font-secondary sm:inline'>{user.name.split(" ")[0]}</span>
+                                        </Link>
+                                        <button
+                                            onClick={() => logout()}
+                                            className={`u-bg-black block w-full lg:mt-8 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl u-font-secondary text-lg u-text-white flex flex-row justify-start items-center hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-offset-2
+							  focus:ring-gray-500 transition duration-150 ease-in-out disabled:opacity-50 ${location.pathname === '/profile' && "visible"}`}
+                                            disabled={loading}
+                                        >
+                                            {
+                                                loading && <Loader className='mr-2 h-5 w-5 animate-spin stroke-white ' aria-hidden='true' />
+                                            }
+                                            <LogOutIcon stroke="white" />
+                                            Log Out
+                                            
+                                        </button>
+                                    </>
 
                                 ) : (
                                     <>

@@ -15,10 +15,13 @@ const ProductPage = () => {
 
 
     const skeleton = (
-        <div className="flex gap-4 flex-row items-center justify-center my-10">
-            <div className="flex w-[85%] flex-col gap-4">
-                <div className="skeleton h-[90vh] w-full"></div>
+        <div className="flex flex-col gap-4 flex-row items-center justify-center my-10">
+            <div className="relative flex items-center justify-center">
+                <div className='w-20 h-20 border-yellow-500 border-t-2 animate-spin rounded-full abolsute top-0 left-0' />
             </div>
+            <h1 className="text-center text-lg u-font-sarasvati col-span-3 py-10">
+                Great Choice...
+            </h1>
         </div>
     )
 

@@ -26,19 +26,19 @@ const Product = ({ productData }) => {
         >
 
 
-            <div className="w-full relative flex flex-col lg:flex-row justify-around items-start pb-4 lg:py-4 flex-warp">
-                <div className="sticky top-0 images-container basis-[55%] py-4 flex flex-row justify-center items-start">
+            <div className="w-full relative flex flex-col lg:flex-row justify-around items-center lg:items-start pb-4 lg:py-4 flex-warp">
+                <div className="relative lg:sticky top-0 images-container basis-[55%] py-4 flex flex-row justify-center items-start">
                     <ImagePreview imagesURLs={productData.images} />
                 </div>
-                <div className="product-details-container rounded-[25px] py-10 u-border-accent u-box-shadow lg:basis-[45%] u-bg-secondary px-10 mt-4"> 
-                    <div className="buy-now-parent flex flex-col">
+                <div className="product-details-container w-full rounded-[25px] py-8 lg:py-10 u-border-accent u-box-shadow lg:basis-[45%] u-grad  lg:px-10 mt-4"> 
+                    <div className="buy-now-parent w-full flex flex-col items-center">
                         <div className="flex flex-row justify-start gap-4 items-center">
-                            <h1 className="u-font-secondary text-3xl mb-2 mt-2 u-text-accent u-text-shadow text-start">
+                            <h1 className="u-font-sarasvati u-font-sb text-3xl mb-2 mt-2 u-text-black u-text-shadow">
                                 {productData.name}
                             </h1>
                         </div>
 
-                        <div className="flex flex-row justify-start gap-4 mt-2 items-center">
+                        <div className="flex flex-col lg:flex-row justify-start lg:gap-4 mt-2 items-center">
 
                             <p className="u-font-wasted text-2xl text-tertiary">
                                 {formatter.format(Math.floor(productData.price - (productData.price * (productData.discount / 100)) + 1))}
@@ -57,11 +57,11 @@ const Product = ({ productData }) => {
                         <p className="u-font-wasted text-xs text-slate-600">
                             MRP (Incl. of all taxes)
                         </p>
-                        <div>
+                        <div className="flex flex-col items-center justify-center">
                             <h2 className="u-font-itangiuh text-2xl text-start mt-4 u-text-accent">
                                 About this item
                             </h2>
-                            <p className="u-font-wasted text-xl text-start text-slate-600">
+                            <p className="u-font-wasted text-xl text-slate-600 text-center w-auto">
                                 {productData.description}
                             </p>
                         </div>
@@ -71,7 +71,7 @@ const Product = ({ productData }) => {
                             !user &&
                             <Link
                                 to='/login'
-                                className='flex w-full flex-row text-center justify-center items-center u-bg-black shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white'
+                                className='flex mx-2 w-full flex-row text-center justify-center items-center u-bg-black shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-secondary text-lg u-text-white'
                             >
                                 <ShoppingBag className='mr-2 stroke-white' size={20} />
                                 Please login to continue
@@ -81,7 +81,7 @@ const Product = ({ productData }) => {
                             user &&
                             <button
                                 onClick={() => addToCart(productData)}
-                                className='flex flex-row text-center w-full justify-center items-center u-bg-tertiary shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white'
+                                className='flex flex-row text-center mx-2 w-full justify-center items-center u-bg-green shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-secondary text-lg u-text-white'
                             >
                                 <ShoppingBag className='mr-2 stroke-white' size={22} />
                                 Add to Cart

@@ -178,7 +178,7 @@ const Address = ({ user }) => {
                         <button
                             type="button"
                             onClick={() => setAddress({ ...address, disabled: false })}
-                            className={`u-bg-tertiary text-center px-10 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-sarasvati text-lg u-text-white
+                            className={`u-bg-tertiary text-center px-10 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-secondary text-lg u-text-white
                                 transition duration-150 ease-in-out disabled:opacity-50`}
                         >
                             Edit Shipping Details
@@ -189,7 +189,7 @@ const Address = ({ user }) => {
                     !address.disabled && !loading && (
                         <button
                             type="submit"
-                            className={`text-center px-10 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-sarasvati text-lg u-text-white
+                            className={`text-center u-font-secondary px-2 lg:px-10 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-sarasvati text-md lg:text-lg u-text-white
                                 transition duration-150 ease-in-out disabled:opacity-50 u-bg-primary`}
                         >
                             Update Shipping Details
@@ -218,7 +218,7 @@ const Address = ({ user }) => {
                                     disabled: true
                                 }
                             )}
-                            className="text-center px-10 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-sarasvati text-lg u-text-white u-bg-primary"
+                            className="text-center px-10 mt-4 shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl py-2 u-font-secondary text-lg u-text-white u-bg-primary"
                         >
                             Cancel
                         </button>

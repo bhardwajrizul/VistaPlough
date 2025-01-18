@@ -53,7 +53,7 @@ const SignUpPage = () => {
 									value={formData.name}
 									onChange={(e) => setFormData({ ...formData, name: e.target.value })}
 									className='block u-font-wasted w-full px-3 py-2 pl-10 u-bg-white u-border-accent border-gray-600 rounded-md shadow-sm
-									 placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'
+									 placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm'
 									placeholder='John Doe'
 								/>
 							</div>
@@ -74,7 +74,7 @@ const SignUpPage = () => {
 									value={formData.email}
 									onChange={(e) => setFormData({ ...formData, email: e.target.value })}
 									className='block u-font-wasted w-full px-3 py-2 pl-10 u-bg-white u-border-accent border-gray-600 rounded-md shadow-sm
-									 placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'
+									 placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm'
 
 									placeholder='you@example.com'
 								/>
@@ -96,7 +96,7 @@ const SignUpPage = () => {
 									value={formData.password}
 									onChange={(e) => setFormData({ ...formData, password: e.target.value })}
 									className='block u-font-wasted u-font-wasted w-full px-3 py-2 pl-10 u-bg-white u-border-accent border-gray-600 rounded-md shadow-sm
-									 placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'
+									 placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm'
 									placeholder='••••••••••••••••'
 								/>
 							</div>
@@ -117,7 +117,7 @@ const SignUpPage = () => {
 									value={formData.confirmPassword}
 									onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
 									className='block u-font-wasted w-full px-3 py-2 pl-10 u-bg-white u-border-accent border-gray-600 rounded-md shadow-sm
-									 placeholder-gray-400 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm'
+									 placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm'
 									placeholder='••••••••••••••••'
 								/>
 							</div>
@@ -125,9 +125,9 @@ const SignUpPage = () => {
 
 						<button
 							type='submit'
-							className='u-bg-accent shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-8 py-2 u-font-sarasvati text-2xl u-text-white w-full flex justify-center py-2 px-4
+							className='u-bg-accent shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-8 py-2 u-font-secondary text-2xl u-text-white w-full flex justify-center items-center
 							hover:u-bg-accent-light focus:outline-none focus:ring-2 focus:ring-offset-2
-							focus:ring-yellow-500 transition duration-150 ease-in-out disabled:opacity-50'
+							focus:ring-green-500 transition duration-150 ease-in-out disabled:opacity-50'
 							disabled={loading}
 						>
 							{loading ? (

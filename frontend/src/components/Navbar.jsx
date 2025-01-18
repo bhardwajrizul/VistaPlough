@@ -1,13 +1,21 @@
-import { LucideUser, UserPlus, LogIn, SearchIcon } from "lucide-react";
+import {
+	LucideUser,
+	UserPlus,
+	LogIn,
+	SearchIcon,
+	HomeIcon,
+	StoreIcon,
+	ShoppingCartIcon,
+	LucideLayoutDashboard,
+} from "lucide-react";
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUserStore } from "../stores/useUserStore";
 import { useCartStore } from "../stores/useCartStore";
 
 import LogoWithLink from './Logo';
 
-import HomeImage from '../assets/Images/home.svg';
-import ShopImage from '../assets/Images/shop.svg';
-import CartImage from '../assets/Images/cart.svg';
+
 import { useState } from "react";
 
 
@@ -53,8 +61,8 @@ const Navbar = () => {
 							<Link
 								to={"/products"}
 								className='flex flex-row items-center justify-center'>
-								<img src={ShopImage} alt='Home' className='w-8 h-8 inline-block' />
-								<span className="u-font-itangiuh u-text-tertiary mt-1">
+								<StoreIcon className="mr-1" stroke="#7f5b98" />
+								<span className="u-font-itangiuh u-text-tertiary">
 									Products
 								</span>
 							</Link>
@@ -64,8 +72,8 @@ const Navbar = () => {
 							<Link
 								to={"/"}
 								className='flex flex-row items-center justify-center'>
-								<img src={HomeImage} alt='Home' className='w-8 h-8 inline-block' />
-								<span className="u-font-itangiuh u-text-tertiary mt-1">
+								<HomeIcon className="mr-1" stroke="#7f5b98" />
+								<span className="u-font-itangiuh u-text-tertiary">
 									Home
 								</span>
 							</Link>
@@ -77,15 +85,15 @@ const Navbar = () => {
 								className='relative group text-gray-300 hover:u-text-accent transition duration-300 
 							ease-in-out'
 							>
-								<div>
-									<img src={CartImage} alt='Cart' className='w-8 h-8 inline-block' />
-									<span className="u-font-itangiuh u-text-accent mt-2">
+								<div className="flex flex-row items-center justify-center">
+									<ShoppingCartIcon className="mr-1" stroke="green" />
+									<span className="u-font-itangiuh u-text-accent">
 										Cart
 									</span>
 								</div>
 								{cart.length > 0 && (
 									<span
-										className='absolute -top-2 -left-2 u-bg-accent text-white rounded-full px-2 py-0.5 
+										className='absolute -top-4 -left-4 u-bg-accent text-white rounded-full px-2 py-0.5 
 									text-xs group-hover:u-bg-primary transition duration-300 ease-in-out'
 									>
 										{cart.length}
@@ -95,9 +103,10 @@ const Navbar = () => {
 						)}
 						{isAdmin && (
 							<Link
-								className='u-bg-accent shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white '
+								className='u-bg-accent flex flex-row items-center shadow-[0px_4px_0px_rgba(0,0,0,0.3)] active:translate-y-[4px] active:shadow-[0px_0px_0px_rgba(0,0,0,0.3)] transition-all rounded-xl px-4 py-2 u-font-sarasvati text-lg u-text-white '
 								to={"/secret-dashboard"}
 							>
+								<LucideLayoutDashboard className="fill-white stroke-white mr-1" size={22} />
 								<span className='hidden u-font-secondary sm:inline u-text-white'>Dashboard</span>
 							</Link>
 						)}

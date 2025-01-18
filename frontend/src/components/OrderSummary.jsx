@@ -12,10 +12,16 @@ const stripePromise = loadStripe(
 const OrderSummary = () => {
 	const { total, subtotal, coupon, isCouponApplied, cart } = useCartStore();
 
+	const formatter = new Intl.NumberFormat('en-IN', {
+		style: 'currency',
+		currency: 'INR',
+	});
+
 	const savings = subtotal - total;
-	const formattedSubtotal = subtotal.toFixed(2);
-	const formattedTotal = total.toFixed(2);
-	const formattedSavings = savings.toFixed(2);
+	const formattedSubtotal = formatter.format(subtotal);
+	const formattedTotal = formatter.format(total);
+	const formattedSavings = formatter.format(savings);
+
 
 	const handlePayment = async () => {
 		const stripe = await stripePromise;
@@ -47,13 +53,13 @@ const OrderSummary = () => {
 				<div className='space-y-2'>
 					<dl className='flex items-center justify-between gap-4'>
 						<dt className='u-font-wasted u-text-black'>Original price</dt>
-						<dd className='u-font-wasted u-text-black'>${formattedSubtotal}</dd>
+						<dd className='u-font-wasted u-text-black'>{formattedSubtotal}</dd>
 					</dl>
 
 					{savings > 0 && (
 						<dl className='flex items-center justify-between gap-4'>
 							<dt className='u-font-wasted u-text-black'>Savings</dt>
-							<dd className='u-font-wasted u-text-black'>-${formattedSavings}</dd>
+							<dd className='u-font-wasted u-text-black'>-{formattedSavings}</dd>
 						</dl>
 					)}
 
@@ -65,7 +71,7 @@ const OrderSummary = () => {
 					)}
 					<dl className='flex items-center justify-between gap-4 border-t border-gray-600 pt-2'>
 						<dt className='u-font-wasted u-text-black font-bold'>Total</dt>
-						<dd className='u-font-wasted u-text-accent font-bold'>${formattedTotal}</dd>
+						<dd className='u-font-wasted u-text-accent font-bold'>{formattedTotal}</dd>
 					</dl>
 				</div>
 

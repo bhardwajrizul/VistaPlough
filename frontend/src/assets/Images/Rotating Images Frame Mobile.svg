@@ -1,8 +1,8 @@
 <svg width="1000" height="1000" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<rect x="1" y="311" width="378" height="378" rx="189" fill="url(#pattern0_56_19)" stroke="#2A431C" stroke-width="2"/>
-<rect x="689" y="1" width="378" height="378" rx="189" transform="rotate(90 689 1)" fill="url(#pattern1_56_19)" stroke="#2A431C" stroke-width="2"/>
-<rect x="987" y="689" width="378" height="378" rx="189" transform="rotate(-180 987 689)" fill="url(#pattern2_56_19)" stroke="#2A431C" stroke-width="2"/>
-<rect x="311" y="999" width="378" height="378" rx="189" transform="rotate(-90 311 999)" fill="url(#pattern3_56_19)" stroke="#2A431C" stroke-width="2"/>
+<rect x="1" y="689" width="378" height="378" rx="189" transform="rotate(-90 1 689)" fill="url(#pattern0_56_19)" stroke="#2A431C" stroke-width="2"/>
+<rect x="311" y="1" width="378" height="378" rx="189" fill="url(#pattern1_56_19)" stroke="#2A431C" stroke-width="2"/>
+<rect x="987" y="311" width="378" height="378" rx="189" transform="rotate(90 987 311)" fill="url(#pattern2_56_19)" stroke="#2A431C" stroke-width="2"/>
+<rect x="311" y="621" width="378" height="378" rx="189" fill="url(#pattern3_56_19)" stroke="#2A431C" stroke-width="2"/>
 <defs>
 <pattern id="pattern0_56_19" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_56_19" transform="translate(0 -0.16644) scale(0.0013587)"/>
